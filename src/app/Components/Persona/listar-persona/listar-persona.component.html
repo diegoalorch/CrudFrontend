@@ -1,0 +1,98 @@
+<div class="center">
+    <button mat-icon-button>
+        <a mat-icon-button routerLink="/persona/add">
+            <mat-icon  class="add" color="accent">add_circle</mat-icon>
+        </a>
+    </button>
+</div>
+<nav class="center">
+    <table mat-table [dataSource]="personas" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="IDPERSONA">
+            <th mat-header-cell *matHeaderCellDef> N° </th>
+            <td mat-cell *matCellDef="let element"> {{element.IDPERSONA}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="NOMBRE">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.NOMBRE}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="APELLIDOS">
+            <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+            <td mat-cell *matCellDef="let element"> {{element.APELLIDOS}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="DNI">
+            <th mat-header-cell *matHeaderCellDef> Dni </th>
+            <td mat-cell *matCellDef="let element"> {{element.DNI}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="FEC_NACIMIENTO">
+            <th mat-header-cell *matHeaderCellDef> Fecha de Nacimiento </th>
+            <td mat-cell *matCellDef="let element"> {{element.FEC_NACIMIENTO}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CELULAR">
+            <th mat-header-cell *matHeaderCellDef> Celular </th>
+            <td mat-cell *matCellDef="let element"> {{element.CELULAR}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CORREO">
+            <th mat-header-cell *matHeaderCellDef> Correo Electronico </th>
+            <td mat-cell *matCellDef="let element"> {{element.CORREO}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="USUARIO">
+            <th mat-header-cell *matHeaderCellDef> Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.USUARIO}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CLAVE">
+            <th mat-header-cell *matHeaderCellDef> Clave </th>
+            <td mat-cell *matCellDef="let element"> {{element.CLAVE}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="IDESTADO_CIVIL">
+            <th mat-header-cell *matHeaderCellDef> Estado Civil </th>
+            <td mat-cell *matCellDef="let element"> {{element.IDESTADO_CIVIL}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="EDITAR">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element">
+                <a mat-icon-button [routerLink]="['/editar', element.IDPERSONA]">
+                    <mat-icon color="primary">edit</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ELIMINAR">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="delPersona(element.IDPERSONA)" mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['IDPERSONA', 'NOMBRE', 'APELLIDOS',
+        'DNI', 'FEC_NACIMIENTO', 'CELULAR', 'CORREO', 'USUARIO', 'CLAVE',
+        'IDESTADO_CIVIL', 'EDITAR', 'ELIMINAR']"></tr>
+
+        <tr mat-row *matRowDef="let fila; columns: ['IDPERSONA', 'NOMBRE', 'APELLIDOS',
+        'DNI', 'FEC_NACIMIENTO', 'CELULAR', 'CORREO', 'USUARIO', 'CLAVE',
+        'IDESTADO_CIVIL', 'EDITAR', 'ELIMINAR'];"></tr>
+
+        <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+
+    </table>
+</nav>
