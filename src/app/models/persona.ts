@@ -1,3 +1,4 @@
+//persona GET
 export class Persona {
     IDPERSONA: number;
     NOMBRE: String;
@@ -9,4 +10,17 @@ export class Persona {
     USUARIO: String;
     CLAVE: String;
     IDESTADO_CIVIL: number;
+}
+//Persona Post - Put
+export class PersonaAdd{
+    idpersona: number;
+    nombre: String;
+    apellidos: String;
+    dni: number;
+    fec_nacimiento: Date;
+    celular: String;
+    correo: String;
+    usuario: String;
+    clave: String;
+    idestado_civil: number;
 }

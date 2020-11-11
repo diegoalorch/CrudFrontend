@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Persona } from 'src/app/models/persona';
+import { Persona, PersonaAdd } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class UpdatePersonaComponent implements OnInit {
   personas: any;  
-  persona:Persona=new Persona();
+  persona:PersonaAdd=new PersonaAdd();
   
   constructor(private personaService:PersonaService, private router: Router, private activatedRoute:ActivatedRoute) { }
 
@@ -24,7 +24,7 @@ export class UpdatePersonaComponent implements OnInit {
         this.personaService.getPersona(id).subscribe(
           (data)=>{
           this.persona=data['CUR_PERSONA'] 
-          this.persona.IDPERSONA=id;
+          this.persona.idpersona=id;
         })
       }
     })
@@ -42,14 +42,14 @@ export class UpdatePersonaComponent implements OnInit {
           confirmButtonText: 'Yes, update it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            this.router.navigate(['/listar'])
             Swal.fire(
               'Actualización Exitosa!',
               'El registro se ha Modificado.',
               'success'
             )
           }
-        })    
+        }) 
+        this.router.navigate(['/listar'])   
     })
   }
   }
